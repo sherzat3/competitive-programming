@@ -19,12 +19,12 @@ int main() {
 
         cin >> n;
 
-        for(int i = n / 3 + 1; i >= 0; --i){
+        for(int i = n / 5 + 1; i >= 0; --i){
             if((n - (5 * i)) % 3 == 0)
                 threes = i, fives = (n - (5 * i)) / 3;
         }
 
-        for(int i = n / 5 + 1; i >= 0; --i){
+        for(int i = n / 3 + 1; i >= 0; --i){
             if((n - (3 * i)) % 5 == 0)
                 fives = i, threes = (n - (3 * i)) / 5;
         }
