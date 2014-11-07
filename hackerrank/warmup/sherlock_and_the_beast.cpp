@@ -5,37 +5,37 @@
 #include <algorithm>
 using namespace std;
 
+int t, a[25];
+
 int main() {
 
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
 
-    int t;
-
     cin >> t;
 
+    a[0] = 1;
+
     while(t--){
-        int n, fives = -1, threes = -1;
+        int n;
 
         cin >> n;
 
-        for(int i = n / 5 + 1; i >= 0; --i){
-            if((n - (5 * i)) % 3 == 0)
-                threes = i, fives = (n - (5 * i)) / 3;
+        int x = n / 15 * 15, ok = 0;
+
+        for(int fv = 0; fv <= 2; ++fv){
+            for(int th = 0; th <= 4; ++th){
+                if(!ok && fv * 5 + th * 3 == n % 15){
+                    for(int i = 0; i < x + (th * 3); ++i) cout << "5";
+                    for(int i = 0; i < fv * 5; ++i) cout << "3";
+                    cout << endl;
+                    ok = 1;
+                    break;
+                }
+            }
         }
 
-        for(int i = n / 3 + 1; i >= 0; --i){
-            if((n - (3 * i)) % 5 == 0)
-                fives = i, threes = (n - (3 * i)) / 5;
-        }
-
-        if(fives == -1) cout << "-1";
-        else{
-            for(int i = 0; i < fives * 3; ++i) cout << "5";
-            for(int i = 0; i < threes * 5; ++i) cout << "3";
-        }
-
-        cout << endl;
+        if(!ok) cout << "-1\n";
     }
     return 0;
 }
